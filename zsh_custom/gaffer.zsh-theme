@@ -1,6 +1,7 @@
-# :::::::::::::
-# :::gaffer::::::::::::::::
-# ::::::::::::::::::::::::::::::::
+# :::::::::::::::::::::::::::::::::::::::::::::
+# :::gaffer::::::::::::::::::::::::::::::::::::::::::::::
+# :::influenced by gatter http://dotshare.it/dots/1184/:::::::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #    ________
 #  / \        \
 #  /   \        \
@@ -15,11 +16,10 @@
 # \      /       /   /      /
 # \    /       /   /      /
 # \  /       /\  /      /
-# \/_______/  \/______/                                             ♺
-
-# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-# : https://github.com/skuzbot/.dot_files:::::::::::::::::::::::::::::
-# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# \/_______/  \/______/                                                         ♺
+# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# :https://github.com/skuzbot/.dot_files/blob/master/zsh_custom/gaffer.zsh-theme::::::
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # vim:ft=zsh ts=2 sw=2 sts=2
 
 local ret_status="%(?:%{$fg_bold[cyan]%} ❮ %{$fg[blue]%}▢ ▢ ▢%{$fg[cyan]%} ❯:%{$fg[red]%} ❮ %{$fg[yellow]%}▢ ▢ ▢%{$fg[red]%} ❯)"
@@ -36,7 +36,7 @@ RPROMPT=$'%b%{$reset_color%}%{$fg_bold[white]%}${${KEYMAP/vicmd/--NORMAL--}/(mai
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[red]%} ♥"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]% ✘"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]% ◬"
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[red]% ✚"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]% ✹"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]% ✖"
