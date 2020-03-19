@@ -19,3 +19,5 @@ alias mt="mix test --trace --only "
 alias xenv='export $(cat .env | xargs)'
 alias cd_tst_css= 'cd ~/Library/Application Support/Firefox/Profiles'
 
+# iex command history
+export ERL_AFLAGS="-kernel shell_history enabled"
