@@ -11,11 +11,15 @@ call minpac#add('k-takata/minpac', {'type': 'opt'})
 call minpac#add('tpope/vim-dadbod')
 " theme
 call minpac#add('tlhr/anderson.vim')
+" git
+call minpac#add('tpope/vim-fugitive')
+
 call minpac#add('liuchengxu/vim-clap')
 call minpac#add('neoclide/coc.nvim', {'branch': 'release'})
 call minpac#add('ervandew/supertab')
 call minpac#add('elixir-editors/vim-elixir')
 call minpac#add('tpope/vim-endwise')
+call minpac#add('tpope/vim-vinegar')
 call minpac#add('liuchengxu/vista.vim')
 call minpac#add('w0rp/ale')
 call minpac#add('itchyny/lightline.vim')
@@ -34,6 +38,10 @@ call minpac#add('maxmellon/vim-jsx-pretty')
 call minpac#add('alvan/vim-closetag')
 " commenting
 call minpac#add('tomtom/tcomment_vim')
+" zen stuff
+call minpac#add('junegunn/limelight.vim')
+call minpac#add('junegunn/goyo.vim')
+call minpac#add('rking/ag.vim')
 
 let g:db_url = $DATABASE_URL
 let g:SuperTabMappingBackward = '<tab>'
@@ -89,10 +97,14 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-" line moving
-nnoremap <c-J> dd p<space>
-nnoremap <c-K> dd k k p<space>
-nnoremap <esc> :noh<return><esc>
+" Move lines up and down
+" It might look weird, but those are option + j and option + k for down and up
+nnoremap ∆ :m .+1<CR>==
+nnoremap ˚ :m .-2<CR>==
+" Duplicate a line down
+nnoremap <A-Down> :t.<CR>
+" Get out of nvim terminal back to normal mode
+:tnoremap <Esc> <C-\><C-n>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"

@@ -17,5 +17,5 @@ alias t_dev='tmux attach -t dev'
 alias :q=exit
 alias mt="mix test --trace --only "
 alias xenv='export $(cat .env | xargs)'
-
+alias cd_tst_css= 'cd ~/Library/Application Support/Firefox/Profiles'
 
