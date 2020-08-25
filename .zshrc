@@ -18,6 +18,12 @@ alias :q=exit
 alias mt="mix test --trace --only "
 alias xenv='export $(cat .env | xargs)'
 alias cd_tst_css= 'cd ~/Library/Application Support/Firefox/Profiles'
+alias vnotes='nvim ~/Documents/notes'
+alias dbcash='psql -U postgres -h localhost -p 5432 cash_accounts'
+alias proto='cd ~/repos/elixir_divvy_protobuf'
+alias vproto='nvim ~/repos/elixir_divvy_protobuf'
+alias eproto='cd ~/repos/elixir_divvy_protobuf'
+alias veproto='nvim ~/repos/elixir_divvy_protobuf'
 
 # iex command history
 export ERL_AFLAGS="-kernel shell_history enabled"
