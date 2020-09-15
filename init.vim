@@ -66,6 +66,14 @@ call minpac#add('elixir-editors/vim-elixir')
 " call minpac#add('mhinz/vim-mix-format')
 " let g:mix_format_on_save = 1
 
+" folds
+set viewoptions-=options
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
 " sql
 " call minpac#add('tpope/vim-dadbod')
 " let g:db_url = $DATABASE_URL
@@ -80,8 +88,9 @@ call minpac#add('adelarsq/vim-matchit')
 call minpac#add('turbio/bracey.vim')
 
 " search
-" call minpac#add('liuchengxu/vim-clap')
-" let g:clap_layout = {'relative': 'editor'}
+call minpac#add('liuchengxu/vim-clap')
+let g:clap_layout = {'relative': 'editor'}
+nnoremap <leader>p :Clap files<CR>
 " call minpac#add('rking/ag.vim')
 call minpac#add('mileszs/ack.vim')
 cnoreabbrev Ack Ack!
@@ -197,7 +206,11 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 call minpac#add('w0rp/ale')
 call minpac#add('maximbaz/lightline-ale')
 
-
+" system clipboards
+map <Leader>y "*y
+map <Leader>d "+d
+map <Leader>p "+p
+map <Leader>P "+P
 
 " :::::::::::::::::::: ??? ::::::::::::::::::::::::::::::::
 " :::::::::::::::::::: ??? ::::::::::::::::::::::::::::::::
@@ -208,7 +221,7 @@ set shiftwidth=2
 set expandtab
 set noshowmode
 set number
-set relativenumber
+" set relativenumber
 set incsearch
 set hlsearch
 set smartcase
@@ -238,8 +251,7 @@ let g:tmux_navigator_save_on_switch = 2
 " ranger
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
-
-
+" whitespace
 call minpac#add('ntpeters/vim-better-whitespace')
 let g:better_whitespace_guicolor='bright_green'
 let g:better_whitespace_enabled=1
@@ -251,7 +263,6 @@ let g:strip_whitespace_confirm=0
 " mappings
 " vnoremap <c-q> :%DB g:db_url<CR>
 " nnoremap <leader>s :DB g:db_url =
-" nnoremap <leader>p :Clap files<CR>
 noremap <leader>lO :Vista<CR>
 nnoremap <leader>/ :silent grep<space>
 nmap <leader>ld <Plug>(coc-definition)zz
@@ -261,16 +272,21 @@ nnoremap <leader>lo :CocList outline<CR>
 nnoremap <leader>lp :CocList diagnostics<CR>
 nnoremap <leader>l? :CocInfo<CR>
 nnoremap <leader>lr :CocRestart<CR>
-nnoremap <leader>, :set nohsearch<CR>
-nnoremap n nzz
 nnoremap N Nzz
 nnoremap gsv :so $MYVIMRC<CR>
+nnoremap <silent> fn :noh<CR>
 
 " window resizing
-nnoremap <silent> <leader>kk :exe "resize " . (winheight(0) * 4/3)<CR>zz
-nnoremap <silent> <leader>jj :exe "resize " . (winheight(0) * 3/4)<CR>zz
-nnoremap <silent> <leader>ll :exe "vertical resize " . (winwidth(0) * 3/4)<CR>^
-nnoremap <silent> <leader>hh :exe "vertical resize " . (winwidth(0) * 4/3)<CR>^
+nnoremap <silent> <leader>k :exe "resize " . (winheight(0) * 3/4)<CR>zz
+nnoremap <silent> <leader>j :exe "resize " . (winheight(0) * 4/3)<CR>zz
+nnoremap <silent> <leader>h :exe "vertical resize " . (winwidth(0) * 2/3)<CR>^
+nnoremap <silent> <leader>l :exe "vertical resize " . (winwidth(0) * 3/2)<CR>^
+
+"split pane
+nnoremap <silent> we :vsp<CR><C-W><C-L>
+nnoremap <silent> ws :sp<CR><C-W><C-J>
+nnoremap <silent> wr <C-W><C-=>
+nnoremap <silent> wq :x<CR>
 
 "split pane navigation
 nnoremap <C-J> <C-W><C-J>
