@@ -17,6 +17,10 @@ colorscheme anderson
 " git
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('airblade/vim-gitgutter')
+" nmap <leader>g :15split \| Gedit :<cr>
+nmap <leader>gs :Gstatus<CR><C-w>14-
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gdd :Gdiff!<CR>
 
 " tmux
 call minpac#add('christoomey/vim-tmux-navigator')
@@ -46,7 +50,7 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gf <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -207,10 +211,14 @@ call minpac#add('w0rp/ale')
 call minpac#add('maximbaz/lightline-ale')
 
 " system clipboards
+map <Leader>fy "*y expand('%')
 map <Leader>y "*y
 map <Leader>d "+d
 map <Leader>p "+p
 map <Leader>P "+P
+
+" sort
+vnoremap <C-s>  :'<,'>sort i<CR>
 
 " :::::::::::::::::::: ??? ::::::::::::::::::::::::::::::::
 " :::::::::::::::::::: ??? ::::::::::::::::::::::::::::::::
@@ -251,6 +259,11 @@ let g:tmux_navigator_save_on_switch = 2
 " ranger
 let g:ranger_command_override = 'ranger --cmd "set show_hidden=true"'
 
+" highlights
+set hlsearch
+hi Search ctermfg=0
+hi Search ctermbg=10
+
 " whitespace
 call minpac#add('ntpeters/vim-better-whitespace')
 let g:better_whitespace_guicolor='bright_green'
@@ -261,6 +274,9 @@ let g:strip_whitespace_confirm=0
 " let g:strip_only_modified_lines=1
 
 " mappings
+" Get out of nvim terminal back to normal mode
+:tnoremap <Esc> <C-\><C-n>
+
 " vnoremap <c-q> :%DB g:db_url<CR>
 " nnoremap <leader>s :DB g:db_url =
 noremap <leader>lO :Vista<CR>
@@ -302,6 +318,31 @@ nnoremap <C-H> <C-W><C-H>
 " nnoremap <A-Down> :t.<CR>
 " " Get out of nvim terminal back to normal mode
 " :tnoremap <Esc> <C-\><C-n>
+
+" tables
+" https://github.com/dhruvasagar/vim-table-mode
+call minpac#add('dhruvasagar/vim-table-mode')
+nmap <leader>tm :TableModeToggle
+
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+" md compatible
+let g:table_mode_corner='|'
+" ReSt compatible
+let g:table_mode_corner_corner='+'
+let g:table_mode_header_fillchar='='
 
 
 "??
